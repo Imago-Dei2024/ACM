@@ -37,8 +37,52 @@ struct EditProfileView: View {
                     }
                     
                     // Change picture button
-                    Button("Change Picture ")
+                    Button("Change Picture") {
+                        // Picture change logic would be implemented here
+                    }
+                    .frame(maxWidth: .infinity)
                 }
+                
+                // Personal Information Section
+                Section("Personal Information") {
+                    HStack {
+                        Text("Name")
+                        Spacer()
+                        TextField("Username", text: $name)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    
+                    HStack {
+                        Text("Username")
+                        Spacer()
+                        TextField("Username", text: $username)
+                            .multilineTextAlignment(.trailing)
+                    }
+                }
+                
+                // Bio Section
+                Section("About")
+                TextEditor(text: $bio)
+                    .frame(minHeight: 60)
+            }
+        }
+        .navigationTitle("Edit Profile")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            //Cancel Button
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Cancel") {
+                    presentationMode.wrappedValue.dismiss()
+                }
+            }
+            
+            // Save Button
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Save") {
+                    // Save logic would be implemented here
+                    presentationMode.wrappedValue.dismiss()
+                }
+                .fontWeight(.semibold) 
             }
         }
     }
