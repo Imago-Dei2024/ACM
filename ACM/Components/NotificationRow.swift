@@ -30,7 +30,7 @@ struct NotificationRow: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(notification.title)
                     .font(.subheadline)
-                    .fontWeight(.notification.isRead ? .regular : .semibold)
+                    .fontWeight(notification.isRead ? .regular : .semibold)
                 
                 Text(notification.message)
                     .font(.caption)
