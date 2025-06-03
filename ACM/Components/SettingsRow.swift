@@ -1,40 +1,37 @@
 //
-//  OptionRow.swift
+//  SettingsRow.swift
 //  ACM
 //
 //  Created by Connor Laber on 6/2/25.
 //
 
-// OptionRow displays selectable optios with icons and titles
+// SettingsRow displays individual setting options
 
 import SwiftUI
 
-struct OptionRow: View {
+struct SettingsRow: View {
     let icon: String
     let title: String
     let color: Color
     
     var body: some View {
         HStack {
-            //Option icon with specified color
+            // Settng icon
             Image(systemName: icon)
                 .font(.title2)
                 .foregroundStyle(color)
                 .frame(width: 30)
             
-            // Option title
+            // Setting title
             Text(title)
                 .font(.body)
             
             Spacer()
             
-            // Chevron indicating navigatable option
+            // Navigation chevron
             Image(systemName: "chevron.right")
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(.secondary) 
         }
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(12)
     }
-} 
+}
