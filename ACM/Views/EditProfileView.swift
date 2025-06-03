@@ -61,7 +61,7 @@ struct EditProfileView: View {
                 }
                 
                 // Bio Section
-                Section("About")
+                Section(content: "About")
                 TextEditor(text: $bio)
                     .frame(minHeight: 60)
             }

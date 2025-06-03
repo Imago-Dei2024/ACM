@@ -10,7 +10,7 @@
 import SwiftUI
 
 struct NotificationRow: View {
-    let notification: NotificationItem
+    let notification: NotificationItem 
     
     var body: some View {
         HStack(spacing: 12) {

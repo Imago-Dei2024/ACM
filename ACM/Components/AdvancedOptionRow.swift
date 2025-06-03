@@ -7,6 +7,8 @@
 
 // Enhanced option row with selection state and detailed information
 
+import SwiftUI
+
 struct AdvancedOptionRow: View {
     let icon: String
     let title: String
@@ -47,7 +49,7 @@ struct AdvancedOptionRow: View {
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.title2)
-                        .foregroundstyle(Color.green)
+                        .foregroundStyle(Color.green)
                 } else {
                     Image(systemName: "chevron.right")
                         .font(.caption)
