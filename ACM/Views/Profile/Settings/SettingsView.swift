@@ -4,12 +4,15 @@
 //
 //  Created by Connor Laber on 6/12/25.
 //
+//  Displays app settings and includes the logout functionality.
+//
 
 import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+    @EnvironmentObject var authManager: AuthManager // Inject the AuthManager
+
     var body: some View {
         NavigationView {
             List {
@@ -36,10 +39,22 @@ struct SettingsView: View {
                 
                 // Logout section
                 Section {
-                    Button("Log Out") {
-                        // Logout logic would be implemented here
+                    // In SettingsView.swift
+
+                    Button(action: {
+                        Task {
+                            await authManager.signOut()
+                        }
+                    }) {
+                        // ...
                     }
-                    .foregroundColor(.red)
+                        HStack {
+                            Spacer()
+                            Text("Log Out")
+                                .foregroundColor(.red)
+                            Spacer()
+                        }
+                    }
                 }
             }
             .navigationTitle("Settings")
@@ -53,4 +68,4 @@ struct SettingsView: View {
             }
         }
     }
-}
+
