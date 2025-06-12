@@ -1,11 +1,9 @@
 //
 //  SettingsView.swift
-//  ACM
+//  ACM2
 //
-//  Created by Connor Laber on 6/2/25.
+//  Created by Connor Laber on 6/12/25.
 //
-
-// SettingsView provides app configuration options
 
 import SwiftUI
 
@@ -15,7 +13,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             List {
-                // Account Settings section
+                // Account settings section
                 Section("Account") {
                     SettingsRow(icon: "person.circle", title: "Account Info", color: .blue)
                     SettingsRow(icon: "lock", title: "Privacy", color: .green)
@@ -29,7 +27,7 @@ struct SettingsView: View {
                     SettingsRow(icon: "globe", title: "Language", color: .green)
                 }
                 
-                // Support Section
+                // Support section
                 Section("Support") {
                     SettingsRow(icon: "questionmark.circle", title: "Help", color: .orange)
                     SettingsRow(icon: "envelope", title: "Feedback", color: .blue)
@@ -41,16 +39,15 @@ struct SettingsView: View {
                     Button("Log Out") {
                         // Logout logic would be implemented here
                     }
-                    .foregroundStyle(Color.red)
+                    .foregroundColor(.red)
                 }
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                // Done button to dismiss settings
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
-                        presentationMode.wrappedValue.dismiss() 
+                        presentationMode.wrappedValue.dismiss()
                     }
                 }
             }

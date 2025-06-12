@@ -1,11 +1,9 @@
 //
 //  SettingsRow.swift
-//  ACM
+//  ACM2
 //
-//  Created by Connor Laber on 6/2/25.
+//  Created by Connor Laber on 6/12/25.
 //
-
-// SettingsRow displays individual setting options
 
 import SwiftUI
 
@@ -16,22 +14,19 @@ struct SettingsRow: View {
     
     var body: some View {
         HStack {
-            // Settng icon
             Image(systemName: icon)
                 .font(.title2)
-                .foregroundStyle(color)
+                .foregroundColor(color)
                 .frame(width: 30)
             
-            // Setting title
             Text(title)
                 .font(.body)
             
             Spacer()
             
-            // Navigation chevron
             Image(systemName: "chevron.right")
                 .font(.caption)
-                .foregroundStyle(.secondary) 
+                .foregroundColor(.secondary)
         }
     }
 }

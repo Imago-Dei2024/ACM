@@ -1,16 +1,14 @@
 //
 //  NotificationRow.swift
-//  ACM
+//  ACM2
 //
-//  Created by Connor Laber on 6/2/25.
+//  Created by Connor Laber on 6/12/25.
 //
-
-//NotificationRow displays individual notification information
 
 import SwiftUI
 
 struct NotificationRow: View {
-    let notification: NotificationItem 
+    let notification: NotificationItem
     
     var body: some View {
         HStack(spacing: 12) {
@@ -18,7 +16,7 @@ struct NotificationRow: View {
             Circle()
                 .fill(notification.isRead ?
                       AnyShapeStyle(Color.gray.opacity(0.3)) :
-                        AnyShapeStyle(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)))
+                      AnyShapeStyle(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)))
                 .frame(width: 40, height: 40)
                 .overlay(
                     Image(systemName: notification.icon)
@@ -34,18 +32,17 @@ struct NotificationRow: View {
                 
                 Text(notification.message)
                     .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .foregroundColor(.secondary)
                     .lineLimit(2)
                 
                 Text(notification.timeAgo)
                     .font(.caption2)
-                    .foregroundStyle(.secondary)
+                    .foregroundColor(.secondary)
             }
             
             Spacer()
             
             // Unread indicator dot
-            
             if !notification.isRead {
                 Circle()
                     .fill(Color.blue)

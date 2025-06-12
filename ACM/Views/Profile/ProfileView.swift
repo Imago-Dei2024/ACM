@@ -1,11 +1,9 @@
 //
 //  ProfileView.swift
-//  ACM
+//  ACM2
 //
-//  Created by Connor Laber on 6/2/25.
+//  Created by Connor Laber on 6/12/25.
 //
-
-//ProfileView displays user profile information and posts
 
 import SwiftUI
 
@@ -17,9 +15,9 @@ struct ProfileView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
-                    // Profile Header Section
+                    // Profile header section
                     VStack(spacing: 16) {
-                        // Profile picture with Gradient background
+                        // Profile picture with gradient background
                         Circle()
                             .fill(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
                             .frame(width: 100, height: 100)
@@ -38,7 +36,7 @@ struct ProfileView: View {
                             
                             Text("@your_username")
                                 .font(.subheadline)
-                                .foregroundStyle(.secondary)
+                                .foregroundColor(.secondary)
                             
                             Text("🌟 Creating amazing interfaces with SwiftUI")
                                 .font(.body)
@@ -46,14 +44,14 @@ struct ProfileView: View {
                                 .padding(.horizontal)
                         }
                         
-                        // Statistics Display
+                        // Statistics display
                         HStack(spacing: 30) {
-                            StatView(number: "1.2k", label: "Posts")
-                            StatView(number: "15.3k", label: "Followers")
+                            StatView(number: "1.2K", label: "Posts")
+                            StatView(number: "15.3K", label: "Followers")
                             StatView(number: "892", label: "Following")
                         }
                         
-                        // Action Buttons
+                        // Action buttons
                         HStack(spacing: 12) {
                             Button("Edit Profile") {
                                 showingEditProfile = true
@@ -61,17 +59,16 @@ struct ProfileView: View {
                             .padding(.horizontal, 20)
                             .padding(.vertical, 8)
                             .background(Color.blue)
-                            .foregroundStyle(Color.white)
+                            .foregroundColor(.white)
                             .cornerRadius(20)
                             
                             Button("Share") {
-                                
                                 // Profile sharing logic would be implemented here
                             }
                             .padding(.horizontal, 20)
                             .padding(.vertical, 8)
                             .background(Color.gray.opacity(0.2))
-                            .foregroundStyle(.primary)
+                            .foregroundColor(.primary)
                             .cornerRadius(20)
                         }
                     }

@@ -1,22 +1,18 @@
 //
 //  NotificationsView.swift
-//  ACM
+//  ACM2
 //
-//  Created by Connor Laber on 6/2/25.
+//  Created by Connor Laber on 6/12/25.
 //
-
-// NotificationsView displays user notifications in a list
 
 import SwiftUI
 
 struct NotificationsView: View {
-    // State array containing sample notifications
     @State private var notifications = sampleNotifications
     
     var body: some View {
         NavigationView {
             List {
-                // Display each notification as a row
                 ForEach(notifications) { notification in
                     NotificationRow(notification: notification)
                 }
@@ -24,7 +20,6 @@ struct NotificationsView: View {
             .navigationTitle("Notifications")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                // Mark all a read button
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Mark All Read") {
                         // Mark all notifications as read logic

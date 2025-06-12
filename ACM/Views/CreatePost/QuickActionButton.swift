@@ -1,11 +1,9 @@
 //
 //  QuickActionButton.swift
-//  ACM
+//  ACM2
 //
-//  Created by Connor Laber on 6/2/25.
+//  Created by Connor Laber on 6/12/25.
 //
-
-// Compact button for quick actions like schedule, save, preview
 
 import SwiftUI
 
@@ -20,12 +18,12 @@ struct QuickActionButton: View {
             VStack(spacing: 8) {
                 Image(systemName: icon)
                     .font(.title2)
-                    .foregroundStyle(color)
+                    .foregroundColor(color)
                 
                 Text(title)
                     .font(.caption)
                     .fontWeight(.medium)
-                    .foregroundStyle(.primary)
+                    .foregroundColor(.primary)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 16)

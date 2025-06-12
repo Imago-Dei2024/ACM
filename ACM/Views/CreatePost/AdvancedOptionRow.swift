@@ -1,11 +1,9 @@
 //
 //  AdvancedOptionRow.swift
-//  ACM
+//  ACM2
 //
-//  Created by Connor Laber on 6/2/25.
+//  Created by Connor Laber on 6/12/25.
 //
-
-// Enhanced option row with selection state and detailed information
 
 import SwiftUI
 
@@ -20,7 +18,7 @@ struct AdvancedOptionRow: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: 16) {
-                //Icon with background
+                // Icon with background
                 ZStack {
                     Circle()
                         .fill(color.opacity(0.1))
@@ -28,7 +26,7 @@ struct AdvancedOptionRow: View {
                     
                     Image(systemName: icon)
                         .font(.title2)
-                        .foregroundStyle(color)
+                        .foregroundColor(color)
                 }
                 
                 // Content
@@ -36,24 +34,25 @@ struct AdvancedOptionRow: View {
                     Text(title)
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundStyle(.primary)
+                        .foregroundColor(.primary)
                     
                     Text(subtitle)
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundColor(.secondary)
                         .lineLimit(1)
                 }
+                
                 Spacer()
                 
-                // Selection Indicator
+                // Selection indicator
                 if isSelected {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.title2)
-                        .foregroundStyle(Color.green)
+                        .foregroundColor(.green)
                 } else {
                     Image(systemName: "chevron.right")
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundColor(.secondary)
                 }
             }
             .padding(16)

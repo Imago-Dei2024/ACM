@@ -1,9 +1,10 @@
 //
 //  HomeView.swift
-//  ACM
+//  ACM2
 //
-//  Created by Connor Laber on 5/28/25.
+//  Created by Connor Laber on 6/12/25.
 //
+
 import SwiftUI
 
 struct HomeView: View {
@@ -25,13 +26,12 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        
+                        // Camera action would be implemented here
                     }) {
                         Image(systemName: "camera")
                             .font(.title2)
                     }
                 }
-                // Messages Button on the right
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         // Messages action would be implemented here
