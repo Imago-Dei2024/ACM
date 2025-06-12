@@ -1,11 +1,10 @@
 //
 //  StatView.swift
-//  ACM
+//  ACM2
 //
-//  Created by Connor Laber on 6/2/25.
+//  Created by Connor Laber on 6/12/25.
 //
 
-// StatView displays numerical statistics with labels.
 import SwiftUI
 
 struct StatView: View {
@@ -14,15 +13,13 @@ struct StatView: View {
     
     var body: some View {
         VStack(spacing: 4) {
-            // Statistical Number
             Text(number)
                 .font(.headline)
                 .fontWeight(.bold)
             
-            // Statistics Label
             Text(label)
                 .font(.caption)
-                .foregroundStyle(.secondary) 
+                .foregroundColor(.secondary)
         }
     }
 }

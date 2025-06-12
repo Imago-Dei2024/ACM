@@ -1,11 +1,9 @@
 //
 //  OptionRow.swift
-//  ACM
+//  ACM2
 //
-//  Created by Connor Laber on 6/2/25.
+//  Created by Connor Laber on 6/12/25.
 //
-
-// OptionRow displays selectable optios with icons and titles
 
 import SwiftUI
 
@@ -16,25 +14,22 @@ struct OptionRow: View {
     
     var body: some View {
         HStack {
-            //Option icon with specified color
             Image(systemName: icon)
                 .font(.title2)
-                .foregroundStyle(color)
+                .foregroundColor(color)
                 .frame(width: 30)
             
-            // Option title
             Text(title)
                 .font(.body)
             
             Spacer()
             
-            // Chevron indicating navigatable option
             Image(systemName: "chevron.right")
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundColor(.secondary)
         }
         .padding()
         .background(Color(.systemGray6))
         .cornerRadius(12)
     }
-} 
+}

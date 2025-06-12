@@ -1,17 +1,14 @@
 //
 //  EditProfileView.swift
-//  ACM
+//  ACM2
 //
-//  Created by Connor Laber on 6/2/25.
+//  Created by Connor Laber on 6/12/25.
 //
-
-// EditProfileView allows users to modify their profile information
 
 import SwiftUI
 
 struct EditProfileView: View {
     @Environment(\.presentationMode) var presentationMode
-    // State variables for editable profile fields
     @State private var name = "Your Name"
     @State private var username = "your_username"
     @State private var bio = "🌟 Creating amazing interfaces with SwiftUI"
@@ -19,11 +16,10 @@ struct EditProfileView: View {
     var body: some View {
         NavigationView {
             Form {
-                //Profile picture section
+                // Profile picture section
                 Section("Profile Picture") {
                     HStack {
                         Spacer()
-                        // Current profile picture display
                         Circle()
                             .fill(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
                             .frame(width: 80, height: 80)
@@ -36,19 +32,18 @@ struct EditProfileView: View {
                         Spacer()
                     }
                     
-                    // Change picture button
                     Button("Change Picture") {
                         // Picture change logic would be implemented here
                     }
                     .frame(maxWidth: .infinity)
                 }
                 
-                // Personal Information Section
+                // Personal information section
                 Section("Personal Information") {
                     HStack {
                         Text("Name")
                         Spacer()
-                        TextField("Username", text: $name)
+                        TextField("Name", text: $name)
                             .multilineTextAlignment(.trailing)
                     }
                     
@@ -60,29 +55,28 @@ struct EditProfileView: View {
                     }
                 }
                 
-                // Bio Section
-                Section(content: "About")
-                TextEditor(text: $bio)
-                    .frame(minHeight: 60)
-            }
-        }
-        .navigationTitle("Edit Profile")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            //Cancel Button
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button("Cancel") {
-                    presentationMode.wrappedValue.dismiss()
+                // Bio section
+                Section("About") {
+                    TextEditor(text: $bio)
+                        .frame(minHeight: 60)
                 }
             }
-            
-            // Save Button
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Save") {
-                    // Save logic would be implemented here
-                    presentationMode.wrappedValue.dismiss()
+            .navigationTitle("Edit Profile")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 }
-                .fontWeight(.semibold) 
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Save") {
+                        // Save logic would be implemented here
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                    .fontWeight(.semibold)
+                }
             }
         }
     }
