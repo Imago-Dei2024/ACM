@@ -1,18 +1,7 @@
-//
-//  AuthManager.swift
-//  ACM
-//
-//  Created by Connor Laber on 6/12/25.
-//
-//  Manages all authentication logic, including sign-in, sign-up, session status,
-//  and user profile management with Supabase.
-//
-
 import Foundation
 import Supabase
 import Combine
 
-// Make UserProfile conform to both Codable (Encodable & Decodable)
 struct UserProfile: Codable, Identifiable {
     let id: UUID
     let fullName: String
@@ -25,38 +14,50 @@ struct UserProfile: Codable, Identifiable {
     }
 }
 
-@MainActor // Run all functions in this class on the main thread
+@MainActor
 class AuthManager: ObservableObject {
-    // MARK: - Published Properties
     @Published var session: Session?
     @Published var userProfile: UserProfile?
     @Published var isLoading = false
     @Published var errorMessage = ""
+    @Published var isAuthCheckComplete = false
 
     private var authTask: Task<Void, Never>?
 
-    // MARK: - Initializer
-    init() {
-        // Start a task to listen for authentication changes
+    // init() is now empty and does not block the main thread.
+    init() {}
+    
+    deinit {
+        authTask?.cancel()
+    }
+
+    /// Starts listening for authentication state changes from Supabase.
+    /// This should be called once when the main app view appears.
+    func listenForAuthStateChanges() {
+        // Ensure we don't start multiple listeners.
+        guard authTask == nil else { return }
+
         authTask = Task {
             for await authEvent in supabase.auth.authStateChanges {
                 self.session = authEvent.session
+                
                 if authEvent.session != nil {
                     self.fetchUserProfile()
                 } else {
                     self.userProfile = nil
                 }
+                
+                // On the first response from Supabase, mark the initial check as complete.
+                if !self.isAuthCheckComplete {
+                    self.isAuthCheckComplete = true
+                }
             }
         }
     }
+
+    // ... (The rest of your functions: signIn, signUp, fetchUserProfile, signOut) ...
+    // ... (No changes are needed for the other functions) ...
     
-    deinit {
-        // Cancel the task when the AuthManager is no longer needed
-        authTask?.cancel()
-    }
-
-    // MARK: - Public Methods
-
     func signIn(email: String, password: String) async {
         isLoading = true
         errorMessage = ""
@@ -76,8 +77,6 @@ class AuthManager: ObservableObject {
             let authResponse = try await supabase.auth.signUp(email: email, password: password)
             let newUserProfile = UserProfile(id: authResponse.user.id, fullName: fullName, email: email)
 
-            // 3. Insert the new profile into the 'profiles' table
-            // **FIXED:** Removed `.database`
             try await supabase
                 .from("profiles")
                 .insert(newUserProfile)
@@ -100,7 +99,6 @@ class AuthManager: ObservableObject {
         
         Task {
             do {
-                // **FIXED:** Removed `.database`
                 let profile: UserProfile = try await supabase
                     .from("profiles")
                     .select()
