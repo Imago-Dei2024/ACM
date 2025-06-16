@@ -1,8 +1,8 @@
 //
 //  SampleData.swift
-//  ACM2
+//  ACM
 //
-//  Created by Connor Laber on 6/12/25.
+//  Created by Connor Laber on 6/15/25.
 //
 
 import Foundation
@@ -14,6 +14,7 @@ let samplePosts = [
     Post(username: "musiclover", timeAgo: "1 day ago", imageName: "music.note", caption: "The universal language of music unites everyone. What song are you listening to today? 🎵", likes: 67)
 ]
 
+// Sample notifications for demonstration purposes
 let sampleNotifications = [
     NotificationItem(icon: "heart.fill", title: "New Like", message: "designerpro liked your post", timeAgo: "5 min ago", isRead: false),
     NotificationItem(icon: "message", title: "New Comment", message: "codingmaster: \"Great post!\"", timeAgo: "15 min ago", isRead: false),
