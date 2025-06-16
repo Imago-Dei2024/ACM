@@ -23,6 +23,10 @@ struct ACMApp: App {
         WindowGroup {
             RootView() // Now starts with RootView
                 .environmentObject(authViewModel) // Inject AuthViewModel into the environment
+                .onAppear {
+                    // Validate configuration on app launch
+                    ConfigManager.shared.validateConfiguration()
+                }
         }
     }
 }
