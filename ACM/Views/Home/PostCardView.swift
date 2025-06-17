@@ -11,12 +11,12 @@ struct PostCardView: View {
     let post: Post
     @State private var isLiked = false
     @State private var likeCount: Int
-    
+
     init(post: Post) {
         self.post = post
         self._likeCount = State(initialValue: post.likes)
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             // User information header
@@ -29,19 +29,19 @@ struct PostCardView: View {
                             .foregroundColor(.white)
                             .font(.headline)
                     )
-                
+
                 VStack(alignment: .leading, spacing: 2) {
                     Text(post.username)
                         .font(.headline)
                         .fontWeight(.semibold)
-                    
+
                     Text(post.timeAgo)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-                
+
                 Spacer()
-                
+
                 Button(action: {
                     // More options action would be implemented here
                 }) {
@@ -51,7 +51,7 @@ struct PostCardView: View {
                 }
             }
             .padding(.horizontal)
-            
+
             // Post image placeholder
             RoundedRectangle(cornerRadius: 12)
                 .fill(LinearGradient(colors: [Color.blue.opacity(0.3), Color.purple.opacity(0.3)], startPoint: .topLeading, endPoint: .bottomTrailing))
@@ -62,7 +62,7 @@ struct PostCardView: View {
                         .foregroundColor(.white)
                 )
                 .padding(.horizontal)
-            
+
             // Interaction buttons
             HStack(spacing: 16) {
                 Button(action: {
@@ -75,19 +75,19 @@ struct PostCardView: View {
                         .font(.title2)
                         .foregroundColor(isLiked ? .red : .primary)
                 }
-                
+
                 Button(action: {}) {
                     Image(systemName: "message")
                         .font(.title2)
                 }
-                
+
                 Button(action: {}) {
                     Image(systemName: "paperplane")
                         .font(.title2)
                 }
-                
+
                 Spacer()
-                
+
                 Button(action: {}) {
                     Image(systemName: "bookmark")
                         .font(.title2)
@@ -105,9 +105,8 @@ struct PostCardView: View {
                 .padding(.horizontal)
         }
         .padding(.vertical, 15)
-        .background(Color(.systemBackground))
-        .cornerRadius(16)
-        .shadow(color: .black.opacity(0.1), radius: 8, x: 0, y: 4)
+        .background(.regularMaterial) // Use adaptive material for the background
+        .cornerRadius(20) // Softer corners
         .padding(.horizontal)
     }
 }

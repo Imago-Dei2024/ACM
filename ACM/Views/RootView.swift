@@ -2,7 +2,7 @@
 //  RootView.swift
 //  ACM
 //
-//  Created by Connor Laber on 6/15/25.
+//  Updated to use the modern authentication system
 //
 
 import SwiftUI
@@ -52,11 +52,14 @@ struct RootView: View {
                         .tag(4)
                 }
                 .accentColor(.blue)
+                .transition(.opacity.combined(with: .scale))
             } else {
                 // Show authentication view when not authenticated
                 AuthView()
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
         }
+        .animation(.spring(response: 0.6, dampingFraction: 0.8), value: authViewModel.isAuthenticated)
         .onAppear {
             // Check authentication status when the view appears
             Task {
